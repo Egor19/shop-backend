@@ -1,0 +1,104 @@
+/* Основные стили */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+  color: #5d5d5d;
+  margin-top: 20px;
+}
+
+/* Таблица */
+table {
+  width: 80%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+  padding: 15px;
+  text-align: center;
+}
+
+th {
+  background-color: #6c63ff;
+  color: #fff;
+}
+
+td {
+  border-bottom: 1px solid #ddd;
+}
+
+/* Изображение товара */
+.product-image img {
+  max-width: 100px;
+  max-height: 100px;
+  border-radius: 8px;
+}
+
+/* Кнопка удаления товара */
+form button[type="submit"] {
+  background-color: #ff4d4d;
+  color: #fff;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form button[type="submit"]:hover {
+  background-color: #e60000;
+}
+
+/* Форма обновления количества */
+form input[type="number"] {
+  width: 50px;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+form button {
+  margin-top: 5px;
+  background-color: #6c63ff;
+  color: #fff;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form button:hover {
+  background-color: #5a55d2;
+}
+
+/* Ссылка оформления заказа */
+a {
+  display: inline-block;
+  margin: 20px auto;
+  text-align: center;
+  color: #fff;
+  background-color: #28a745;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+a:hover {
+  background-color: #218838;
+}
+
+/* Сообщение о пустой корзине */
+p {
+  text-align: center;
+  font-size: 1.2em;
+  color: #777;
+}

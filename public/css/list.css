@@ -1,0 +1,192 @@
+.card-container {
+  display: flex;
+  flex-wrap: wrap; /* Позволяет карточкам переноситься на следующую строку при недостатке места */
+  gap: 20px; /* Расстояние между карточками */
+  justify-content: space-between; /* Распределение карточек по ширине */
+  padding: 20px; /* Отступы внутри контейнера */
+}
+
+.product-card {
+  display: flex;
+  align-items: flex-start;
+  border: 1px solid #e0e0e0;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  width: 48%; /* Чтобы карточки располагались по две в строку и не наезжали друг на друга */
+  box-sizing: border-box; /* Учет паддингов в ширине */
+}
+
+.product-image {
+  flex: 0 0 300px; /* Ширина изображения - 300px */
+}
+
+.product-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.product-info {
+  margin-left: 20px;
+  flex: 1;
+}
+
+.product-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.product-spec {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.product-price {
+  font-size: 20px;
+  font-weight: bold;
+  color: #e74c3c;
+  margin-top: 10px;
+}
+
+.product-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.product-btn {
+  text-decoration: none; /* Убирает подчеркивание */
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.product-btn:hover {
+  background-color: #0056b3;
+}
+
+.pagination {
+  display: flex; /* Используйте flexbox для выравнивания */
+  justify-content: center;/* Выравнивание по правому краю */
+  list-style-type: none; /* Убирает стандартные маркеры списка */
+  padding: 0; /* Убирает внутренние отступы */
+  margin: 0; /* Убирает внешние отступы */
+}
+
+.pagination li {
+  margin: 0 5px;
+}
+
+.pagination li a,
+.pagination li span {
+  display: inline-block;
+  padding: 8px 12px;
+  color: #333;
+  text-decoration: none;
+  padding: 12px 16px; /* Увеличенное значение для размера кнопок */
+  font-size: 18px; /* Увеличенный размер шрифта */
+}
+
+.pagination li.active span {
+  font-weight: bold;
+}
+
+ /* Стили для формы фильтрации */
+.filter-section {
+  margin: 20px; /* Отступы для формы фильтрации */
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  background-color: #f9f9f9; /* Цвет фона формы фильтрации */
+}
+
+.filter-form {
+  display: flex;
+  flex-direction: column; /* Вертикальное размещение элементов */
+  margin-bottom: 20px; /* Отступ между формами */
+}
+
+.filter-form label {
+  margin-bottom: 5px; /* Отступы под заголовками */
+  font-weight: bold; /* Жирный шрифт для заголовков */
+}
+
+.filter-form select {
+  margin-bottom: 15px; /* Отступы между селектами */
+  padding: 10px; /* Внутренние отступы */
+  border: 1px solid #ccc; /* Цвет границы */
+  border-radius: 5px; /* Закругление углов */
+}
+
+.filter-btn {
+  background-color: #007bff; /* Цвет кнопки */
+  color: #fff; /* Цвет текста кнопки */
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.filter-btn:hover {
+  background-color: #0056b3; /* Цвет кнопки при наведении */
+}
+
+/* Стили для бегунков */
+.range-slider {
+  position: relative;
+  width: 300px; /* Ширина контейнера ползунков */
+  margin: 20px 0; /* Отступы для визуального разделения */
+}
+
+.range-slider input[type="range"] {
+  position: absolute;
+  width: 100%;
+  pointer-events: none;
+  appearance: none; /* Универсальная установка для совместимости */
+  -webkit-appearance: none; /* Для Safari и Chrome */
+  -moz-appearance: none; /* Для Firefox */
+  background: transparent; /* Убираем фон */
+}
+
+.range-slider input[type="range"]::-webkit-slider-thumb {
+  pointer-events: auto;
+  width: 15px; /* Ширина бегунка */
+  height: 15px; /* Высота бегунка */
+  background: #007bff; /* Цвет бегунка */
+  border-radius: 50%; /* Закругление бегунка */
+  -webkit-appearance: none; /* Убираем стандартный стиль */
+}
+
+.range-slider input[type="range"]::-moz-range-thumb {
+  width: 15px; /* Ширина бегунка для Firefox */
+  height: 15px; /* Высота бегунка для Firefox */
+  background: #007bff; /* Цвет бегунка */
+  border-radius: 50%; /* Закругление бегунка */
+}
+
+.range-slider input[type="range"]::-ms-thumb {
+  width: 15px; /* Ширина бегунка для IE */
+  height: 15px; /* Высота бегунка для IE */
+  background: #007bff; /* Цвет бегунка */
+  border-radius: 50%; /* Закругление бегунка */
+}
+
+/* Стили полоски между бегунками */
+.slider-track {
+  position: absolute;
+  height: 5px; /* Высота полоски */
+  background: #007bff; /* Цвет полоски */
+  border-radius: 5px; /* Закругление полоски */
+  z-index: 1; /* Слой над другими элементами */
+}

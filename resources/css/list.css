@@ -1,0 +1,75 @@
+.card-container {
+  display: flex;
+  flex-wrap: wrap; /* Позволяет карточкам переноситься на следующую строку при недостатке места */
+  gap: 20px; /* Расстояние между карточками */
+  justify-content: space-between; /* Распределение карточек по ширине */
+  padding: 20px; /* Отступы внутри контейнера */
+}
+
+.product-card {
+  display: flex;
+  align-items: flex-start;
+  border: 1px solid #e0e0e0;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  width: 48%; /* Чтобы карточки располагались по две в строку и не наезжали друг на друга */
+  box-sizing: border-box; /* Учет паддингов в ширине */
+}
+
+.product-image {
+  flex: 0 0 300px; /* Ширина изображения - 300px */
+}
+
+.product-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.product-info {
+  margin-left: 20px;
+  flex: 1;
+}
+
+.product-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.product-spec {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.product-price {
+  font-size: 20px;
+  font-weight: bold;
+  color: #e74c3c;
+  margin-top: 10px;
+}
+
+.product-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.product-btn {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.product-btn:hover {
+  background-color: #0056b3;
+}

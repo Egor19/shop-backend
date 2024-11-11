@@ -1,0 +1,105 @@
+/* Общий стиль для страницы */
+body {
+  background-color: #f7f7f7;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Контейнер для формы */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Стиль для карточки */
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+}
+
+/* Заголовок карточки */
+.card-header {
+  background-color: #007bff;
+  color: #fff;
+  padding: 15px;
+  font-size: 24px;
+  text-align: center;
+  border-radius: 10px 10px 0 0;
+  margin-bottom: 20px;
+}
+
+/* Внутренние поля формы */
+.form-control {
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  font-size: 16px;
+}
+
+/* Сообщения об ошибках */
+.invalid-feedback {
+  color: #e74c3c;
+  font-size: 14px;
+}
+
+/* Кнопка "Войти" */
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Ссылка на восстановление пароля */
+.btn-link {
+  color: #007bff;
+  text-decoration: none;
+  padding-left: 10px;
+}
+
+.btn-link:hover {
+  text-decoration: underline;
+}
+
+/* Чекбокс "Запомнить меня" */
+.form-check-input {
+  margin-right: 10px;
+}
+
+.form-check-label {
+  font-size: 14px;
+  color: #555;
+}
+
+/* Сдвиг формы для правильного отображения */
+.offset-md-4 {
+  margin-left: 33.333333%;
+}
+
+/* Дополнительные стили для мобильных устройств */
+@media (max-width: 768px) {
+  .container {
+      padding: 20px;
+  }
+
+  .card {
+      width: 100%;
+  }
+
+  .offset-md-4 {
+      margin-left: 0;
+  }
+
+  .col-md-6 {
+      width: 100%;
+  }
+}

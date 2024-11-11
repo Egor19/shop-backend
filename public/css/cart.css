@@ -1,0 +1,53 @@
+/* Стили только для контейнера корзины */
+.cart-container {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.cart-table th,
+.cart-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.product-image img {
+  max-width: 80px;
+  height: auto;
+  border-radius: 5px;
+}
+
+.cart-button {
+  background-color: #6c63ff;
+  color: #fff;
+  border: none;
+  padding: 6px 10px;
+  margin-top: 5px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.cart-button:hover {
+  background-color: #5a54d3;
+}
+
+.checkout-link a {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #6c63ff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.checkout-link a:hover {
+  background-color: #5a54d3;
+}
