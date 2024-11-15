@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  nginx: 
+    image: nginx:latest
+    volumes:
+      - ./:/var/www/
+      - ./_docker/nginx/conf.d/:/etc/nginx/conf.d/
+    ports: 
+      - '8876:80'
+    depends_on:
+      - app
+    container_name: market_nginx
+
+  app:
+    build: 
+      context: .
+      dockerfile: _docker/app/Dockerfile
+    volumes:
+      - ./:/var/www/
+    container_name: market_app
+
+  db:
+    image: mysql:8.0
+    restart: always
+    volumes:
+      - ./tmp/db:/var/lib/mysql
+
+    environment:
+        MYSQL_DATABASE: market
+        MYSQL_ROOT_PASSWORD: root
+    ports:
+      - 8100:3306
+
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+    container_name: market_db
+      
+  
+    
+
+    
+    
