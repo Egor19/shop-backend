@@ -11,6 +11,7 @@ services:
     depends_on:
       - app
     container_name: market_nginx
+    
 
   app:
     build: 
@@ -20,6 +21,17 @@ services:
       - ./:/var/www/
     container_name: market_app
 
+  # Контейнер с phpMyAdmin
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment: 
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: root
+    depends_on:
+      - db
+    ports:
+      - 3001:80
+   
   db:
     image: mysql:8.0
     restart: always
@@ -32,10 +44,14 @@ services:
     ports:
       - 8100:3306
 
+
+    
+
     command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
     container_name: market_db
       
-  
+
+ 
     
 
     
