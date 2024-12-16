@@ -7,7 +7,6 @@ use App\Http\Controllers\ListController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\BuyController;
-use App\Http\Controllers\FilterController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ErrorsController;
 use Illuminate\Support\Facades\Auth;
@@ -22,7 +21,7 @@ Route::get('main', function () {
 });
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-Route::get('/list/filter', FilterController::class)->name('list.filter');
+// Route::get('/list/filter', FilterController::class)->name('list.filter');
 Route::delete('/cart/remove/{id}', [CartController::class, 'removeFromCart'])->name('cart.remove');
 Route::post('/cart/update', [CartController::class, 'updateCart'])->name('cart.update');
 

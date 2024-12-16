@@ -3,22 +3,52 @@
 namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Http\Requests\AddRequest;
+use App\Models\Categories;
+use App\Models\TagProduct;
+use App\Models\ColorProduct;
+use Illuminate\Support\Facades\Storage;
 
 class AddController extends Controller
 {
     public function __invoke(AddRequest $request)
     {
-       
+
         try {
             $validatedData = $request->validated();
             // Сохраняем изображение и получаем путь
-            if ($request->hasFile('profile_image')) {
-                $imagePath = $request->file('profile_image')->store('profile_image', 'public');
-                $validatedData['profile_image'] = $imagePath;
-            Product::create($validatedData);
+            if ($request->hasFile('preview_image')) {
+                $validatedData['preview_image'] = Storage::disk('public')->put('/image', $validatedData['preview_image']);
+            }
+
+//dd($validatedData);
+            $tagsIds = $validatedData['tags'];
+            $colorsIds = $validatedData['colors'];
+            unset($validatedData['tags'], $validatedData['colors']);
+
+            $product = Product::create($validatedData);
+
+            foreach($tagsIds as $tagsId){
+                TagProduct::firstOrCreate([
+                    'product_id' => $product->id,
+                    'tag_id' => $tagsId,
+                ]);
+
+            }
+
+            foreach($colorsIds as $colorId){
+                ColorProduct::firstOrCreate([
+                    'product_id' => $product->id,
+                    'color_id' => $colorId,
+                ]);
+
+            }
+
+
+                // Обработка данных для Category
+    
 
             
-                }
+                
 
             // Перенаправление с сообщением об успешном сохранении
             return redirect()->route('list.index')->with('success', 'Данные успешно сохранены!');
@@ -26,17 +56,10 @@ class AddController extends Controller
             // Если ошибка, то перенаправляем с сообщением об ошибке
             return redirect()->back()->withErrors($e->getMessage());
         }
-
- 
-
-   
-   
-    
-    
     }
 }
 
-
+ 
 
 
 //   // Сохранение изображения, если оно загружено

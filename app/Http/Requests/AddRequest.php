@@ -22,15 +22,17 @@ class AddRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:255',
-            'processor' => 'required|string|max:255',
-            'memory_capacity' => 'required|integer|max:255',
-            'disk_capacity' => 'required|integer|max:255',
-            'video_card' => 'required|string|max:255',
-            'weight' => 'required|numeric',
-            'profile_image' => 'required|image|max:2048',
+            'title' => 'required|string|max:255',
+            'description' => 'required|string|',
+            'content' => 'required|string|',
+            'preview_image' => 'required|image|max:2048',
             'price' => 'required|numeric',
             'count' => 'required|integer|max:255',
+            'is_published' => 'nullable',
+            'category_id' => 'nullable',
+            'tags' => 'nullable|array',
+            'colors' => 'nullable|array',
+
         ];
     }
 }

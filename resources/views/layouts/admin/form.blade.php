@@ -2,6 +2,9 @@
 
 @section('title', 'Добавить товар')
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
 <style>
 form {
         margin: 20px; /* Отступ от краев элемента */
@@ -44,7 +47,7 @@ form {
 @section('content')
 
 
-  <h1>Заполните поля с информацией о ноутбуке: </h1>
+  <h1>Заполните поля с информацией о товаре: </h1>
 
    <!-- Сообщение об ошибке -->
    @if ($errors->any())
@@ -66,34 +69,69 @@ form {
    
   <form action="{{ route('form.store') }}" method="post"  enctype="multipart/form-data">
   @csrf
+  <div class="form-group">
   <label for="textInput1">Название:</label>
-  <input type="text" id="textInput1" name='name' required>
-
-  <label for="textInput2">Процессор:</label>
-  <input type="text" id="textInput2" name='processor' required>
-
-  <label for="textInput3">Объем памяти(Гб):</label>
-  <input type="text" id="textInput3" name='memory_capacity' required>
-
-  <label for="textInput4">Объем диска(Гб):</label>
-  <input type="text" id="textInput4" name='disk_capacity' required>
-
-  <label for="textInput5">Видеокарта:</label>
-  <input type="text" id="textInput5" name='video_card' required>
-
-  <label for="textInput6">Вес(кг):</label>
-  <input type="text" id="textInput6" name='weight' required>
-
-  <br>
+  <input type="text" id="textInput1" name='title' required>
+  </div>
   
+  <div class="form-group">
+  <label for="textInput2">Описание:</label>
+  <input type="text" id="textInput2" name='description' required>
+  </div>
+
+  <div class="form-group">
+  <label for="textInput3">Контент:</label>
+  <input type="text" id="textInput3" name='content' required>
+  </div>
+
+  <div class="form-group">
   <label for="textInput8">Цена(рубли):</label>
   <input type="text" id="textInput8" name='price'>
+  </div>
 
+  <div class="form-group">
   <label for="textInput9">Количество товара:</label>
   <input type="text" id="textInput9" name='count'>
+  </div>
   
-  <label for="profile_image">Изображение товара:</label>
-  <input type="file" name="profile_image" required>
+  <div class="form-group">
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input name="preview_image" type="file" class="custom-file-input" id="exampleInputFile">
+                        <label class="custom-file-label" for="exampleInputFile">Выберите файл</label>
+                      </div>
+                      <div class="input-group-append">
+                        <!-- <span class="input-group-text">Загрузить</span> -->
+                      </div>
+                    </div>
+  </div>
+
+  <div class="form-group">
+        
+                  <select name="category_id" class="form-control select2" style="width: 100%;">
+                    <option selected="selected" disabled>Выберите категорию</option>
+                    @foreach($categories as $category)
+                    <option value="{{ $category['id'] }}">{{ $category['title'] }}</option>
+                    @endforeach
+                  </select>
+  </div>
+
+
+  <div class="form-group">
+  <select name="tags[]" class="tags" multiple="multiple" data-placeholder="Выберите тег" style="width: 100%;">
+                    @foreach($tags as $tag)
+                    <option value="{{ $tag['id'] }}">{{$tag['title']}}</option>
+                    @endforeach
+                  </select>
+  </div>
+<div class="form-group">
+<select name="colors[]" class="colors" multiple="multiple" data-placeholder="Выберите цвет" style="width: 100%;">
+                    @foreach($colors as $color)
+                    <option value="{{ $color['id'] }}" data-color="{{ $color['title'] }}">{{ $color['title'] }}</option>
+                    @endforeach
+                  </select>
+</div>
+   
    
 
   <br>
@@ -102,4 +140,26 @@ form {
 
   </form>
 
+  <script>
+  $(document).ready(function() {
+    $('.colors').select2({
+      templateResult: formatColor,
+      templateSelection: formatColor
+    });
+
+    function formatColor(color) {
+      if (!color.id) {
+        return color.text;
+      }
+      var colorCode = $(color.element).data('color');
+      var $colorBox = $(
+        '<span><span style="display: inline-block; width: 20px; height: 20px; background-color:' + colorCode + '; border: 1px solid #000; margin-right: 5px;"></span>' + color.text + '</span>'
+      );
+      return $colorBox;
+    }
+  });
+</script>
+
 @endsection
+
+

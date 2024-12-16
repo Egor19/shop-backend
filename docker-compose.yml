@@ -10,7 +10,7 @@ services:
       - '8876:80'
     depends_on:
       - app
-    container_name: market_nginx
+    container_name: shop_nginx
     
 
   app:
@@ -19,27 +19,27 @@ services:
       dockerfile: _docker/app/Dockerfile
     volumes:
       - ./:/var/www/
-    container_name: market_app
+    container_name: shop_app
 
   # Контейнер с phpMyAdmin
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     environment: 
-      PMA_HOST: db
+      PMA_HOST: db_shop
       MYSQL_ROOT_PASSWORD: root
     depends_on:
-      - db
+      - db_shop
     ports:
       - 3001:80
    
-  db:
+  db_shop:
     image: mysql:8.0
     restart: always
     volumes:
-      - ./tmp/db:/var/lib/mysql
+      - ./tmp/db_shop:/var/lib/mysql
 
     environment:
-        MYSQL_DATABASE: market
+        MYSQL_DATABASE: shop
         MYSQL_ROOT_PASSWORD: root
     ports:
       - 8100:3306
@@ -48,7 +48,7 @@ services:
     
 
     command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
-    container_name: market_db
+    container_name: shop_db
       
 
  

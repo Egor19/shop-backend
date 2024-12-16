@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Filters\ProductFilter;
+use App\Models\Category;
+use App\Models\Color;
+use App\Models\Tag;
 
 class AdminController extends Controller
 {
@@ -12,7 +15,12 @@ class AdminController extends Controller
     }
 
     public function viewForm(){
-        return view('layouts.admin.form');
+        $categories = Category::all();
+        $colors = Color::all();
+        $tags = Tag::all();
+
+
+        return view('layouts.admin.form', compact('categories', 'colors', 'tags'));
     }
 
     public function viewList(ProductFilter $filter){

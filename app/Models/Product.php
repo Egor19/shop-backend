@@ -2,40 +2,40 @@
 
 namespace App\Models;
 
-use App\Filters\QueryFilter;
+use App\Http\Filters\P;
+use App\Models\Traits\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\Log;
 
 class Product extends Model
 {
-    use HasFactory;
 
-    protected $table = 'market';
+    use Filterable;
 
-    public $timestamps = false;
+    protected $table = 'products';
+    protected $guarded = false;
 
-    protected $fillable = ["name",	"processor",	"memory_capacity",	"disk_capacity", "video_card",	"weight",	"profile_image",	"price", "count"];
-
-    public function updateProductCount($id, $newCount)
-    {
-        // Находим товар по ID
-        $product = Product::find($id);
-    
-        // Проверяем, существует ли товар
-        if ($product) {
-            // Изменяем значение count
-            $product->count = $newCount;
-    
-            // Сохраняем изменения
-            $product->save();
-    
-        } 
+    public function category(){
+        return $this->BelongsTo(Category::class, 'category_id', 'id');
     }
 
-    public function scopeFilter(Builder $builder, QueryFilter $filter){
-        return $filter-> apply($builder);
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'product_tags', 'product_id', 'tag_id');
+    
+    }
+
+    public function colors()
+    {
+        return $this->belongsToMany(Color::class, 'color_products', 'product_id', 'color_id');
+    }
+
+
+    public function getImageUrlAttribute(){
+        return url('storage/' . $this->preview_image);
     }
     
 
