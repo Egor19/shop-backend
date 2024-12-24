@@ -27,7 +27,11 @@ class IndexRequest extends FormRequest
         'prices' => 'nullable|array', // Проверка объекта как массива
         'prices.min' => 'nullable|integer|min:0', // Поле min должно быть числом >= 0
         'prices.max' => 'nullable|integer|min:0', // Поле max должно быть числом >= 0
-        'tags' => 'nullable|array', // Проверка массива
+        'tags' => 'nullable|array', 
+        'page' => 'nullable|integer',
+        'sort' => 'nullable|string',
+        'direction' => 'nullable|string',
+          // Проверка массива
          // Каждый элемент массива tags должен быть строкой
   
         

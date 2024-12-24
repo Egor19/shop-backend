@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Http\Filters\P;
 use App\Models\Traits\Filterable;
+use App\Models\Traits\Sortable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -14,6 +15,9 @@ class Product extends Model
 {
 
     use Filterable;
+    use Sortable;
+
+    public $sortables = ['title', 'price'];
 
     protected $table = 'products';
     protected $guarded = false;

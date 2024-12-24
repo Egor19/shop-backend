@@ -37,7 +37,6 @@ services:
     restart: always
     volumes:
       - ./tmp/db_shop:/var/lib/mysql
-
     environment:
         MYSQL_DATABASE: shop
         MYSQL_ROOT_PASSWORD: root

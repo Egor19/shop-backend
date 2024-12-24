@@ -36,7 +36,7 @@ class FilterListController extends Controller
         ],
         
     ];
-    return response()->json($result);
+    return response()->json($result)->header('Access-Control-Allow-Origin', '*');
         
     }
 }

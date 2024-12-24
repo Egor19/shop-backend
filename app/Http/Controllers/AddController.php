@@ -51,7 +51,8 @@ class AddController extends Controller
                 
 
             // Перенаправление с сообщением об успешном сохранении
-            return redirect()->route('list.index')->with('success', 'Данные успешно сохранены!');
+            return back()->with('success', 'Данные успешно сохранены!');
+
         } catch (\Exception $e) {
             // Если ошибка, то перенаправляем с сообщением об ошибке
             return redirect()->back()->withErrors($e->getMessage());
